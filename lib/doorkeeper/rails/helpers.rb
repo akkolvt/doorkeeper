@@ -4,7 +4,7 @@ module Doorkeeper
       extend ActiveSupport::Concern
 
       def doorkeeper_authorize!(*scopes)
-        @_doorkeeper_scopes = scopes || Doorkeeper.configuration.default_scopes
+        @_doorkeeper_scopes = Doorkeeper.configuration.default_scopes.all + scopes
 
         if doorkeeper_token_is_invalid?
           doorkeeper_render_error

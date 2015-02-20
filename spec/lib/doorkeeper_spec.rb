@@ -4,6 +4,7 @@ describe Doorkeeper do
   describe 'authenticate' do
     let(:token) { double('Token') }
     let(:request) { double('ActionDispatch::Request') }
+
     before do
       allow(Doorkeeper::OAuth::Token).to receive(:authenticate).
         with(request, *token_strategies) { token }
